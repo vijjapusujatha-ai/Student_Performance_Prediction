@@ -38,8 +38,13 @@ def home():
         prediction = round(result[0],2)
 
     return render_template(
-        "index.html",
-        prediction=prediction
+    "index.html",
+    prediction=prediction,
+    performance=(
+        "Excellent" if prediction >= 85
+        else "Good" if prediction >= 70
+        else "Needs Improvement"
+    ) if prediction is not None else None
     )
 
 if __name__ == "__main__":
